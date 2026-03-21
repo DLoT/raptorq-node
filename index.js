@@ -310,7 +310,8 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { encode, getOti } = nativeBinding
+const { encode, getOti, RaptorQDecoder } = nativeBinding
 
 module.exports.encode = encode
 module.exports.getOti = getOti
+module.exports.RaptorQDecoder = RaptorQDecoder

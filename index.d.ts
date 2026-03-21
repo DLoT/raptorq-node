@@ -5,3 +5,7 @@
 
 export declare function encode(data: Buffer, symbolSize: number, sourceBlocks: number, alignment: number, repairPackets: number): Array<Buffer>
 export declare function getOti(dataLength: number, symbolSize: number, sourceBlocks: number, alignment: number): Buffer
+export declare class RaptorQDecoder {
+  constructor(otiHeader: Buffer)
+  addPacket(packetBuffer: Buffer): Buffer | null
+}
