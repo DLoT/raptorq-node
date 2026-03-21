@@ -310,6 +310,7 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { sum } = nativeBinding
+const { encode, getOti } = nativeBinding
 
-module.exports.sum = sum
+module.exports.encode = encode
+module.exports.getOti = getOti
