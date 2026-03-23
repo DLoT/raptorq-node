@@ -1,21 +1,24 @@
 
 [package]
-authors = ["LongYinan <lynweklm@gmail.com>"]
+authors = ["Thomas Achleiter <t.achleitner@streamergy.de>"]
 edition = "2021"
-name = "raptorq_node"
+name    = "raptorq_node"
 version = "0.1.0"
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = "3.0.0"
-napi-derive = "3.0.0"
-raptorq = { version = "2.0.1", features = ["serde_support"] }
+napi        = "3.8.3"
+napi-derive = "3.5.2"
+
+  [dependencies.raptorq]
+  features = ["serde_support"]
+  version  = "2.0.1"
 
 [build-dependencies]
 napi-build = "2"
 
 [profile.release]
-lto = true
+lto   = true
 strip = "symbols"
