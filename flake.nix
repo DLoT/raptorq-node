@@ -22,8 +22,9 @@
 
       rustToolchain = pkgs.rust-bin.stable.latest.default.override {
         targets = [
-          "x86_64-unknown-linux-musl"
+          "x86_64-unknown-linux-gnu"
           "aarch64-unknown-linux-musl"
+          "aarch64-unknown-linux-gnu"
         ];
         extensions = [
           "rust-src"
@@ -41,6 +42,7 @@
           aarch64-musl-pkgs.buildPackages.gcc
           pkg-config
           yarn
+          zig
         ];
 
         shellHook = ''
