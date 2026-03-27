@@ -1,22 +1,6 @@
-# Raptorq bindings Node bindings for node
-
-A high-performance Node.js wrapper for RaptorQ (RFC 6330) Forward Error Correction (FEC).
-
-Thanks to Christopher Berner for creating the [RaptorQ crate](https://github.com/cberner/raptorq/tree/master)
-
-## Build
-
-I use nix for my project so there is a flake that setupt the rust-toolchain
-
-Just run `nix develop` then `./build.sh`
-
-## Usage
-
-Also see examples folder
-
-### Simple example
-
-```typescript
+/**
+ * Run with: node --experimental-transform-types --no-warnings simple.ts
+ */
 import { RaptorQDecoder, RaptorQEncoder } from "../index.js";
 
 const REPAIR_PACKETS = 10;
@@ -39,4 +23,3 @@ for (const packet of packets) {
     process.exit();
   }
 }
-```

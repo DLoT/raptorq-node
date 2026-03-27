@@ -36,5 +36,9 @@
   },
   "scripts": {
     "build": "./build.sh"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.0",
+    "typescript": "6.0.2"
   }
 }
