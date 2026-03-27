@@ -20,9 +20,10 @@ function getBindingPath() {
 
 function load() {
   const suffix = getBindingPath();
-  if (!suffix) throw new Error(`Unsupported platform/arch: ${process.platform} ${process.arch}`);
+  if (!suffix) {
+    throw new Error(`Unsupported platform/arch: ${process.platform} ${process.arch}`);
+  }
 
-  // Try local first, then the package path
   const paths = [
     `./raptorq-node.${suffix}.node`,
     `@dlot/raptorq-node/raptorq-node-${suffix}`

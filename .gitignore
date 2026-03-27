@@ -1,7 +1,4 @@
 /target
 .direnv
-
-*.rq
-complete.bundle*
 node_modules
 .yarn

@@ -6,23 +6,22 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/napi-rs/package-template.git"
+    "url": "https://github.com/DLoT/raptorq-node.git"
   },
   "license": "MIT",
-  "browser": "browser.js",
   "keywords": [
     "napi-rs",
     "NAPI",
     "N-API",
     "Rust",
     "node-addon",
-    "node-addon-api"
+    "node-addon-api",
+    "raptorq"
   ],
   "files": [
     "index.d.ts",
     "index.js",
     "raptorq-node.linux-arm64-gnu.node",
-    "raptorq-node.linux-arm64-musl.node",
     "raptorq-node.linux-x64-gnu.node"
   ],
   "napi": {
@@ -35,19 +34,7 @@
   "engines": {
     "node": ">= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
   "scripts": {
-    "artifacts": "napi artifacts",
-    "build": "napi build --release --platform --target x86_64-unknown-linux-gnu --strip --no-js",
-    "build:aarch64": "napi build --release --platform --target aarch64-unknown-linux-gnu --strip--no-js",
-    "build:debug": "napi build --platform",
-    "format:rs": "cargo fmt",
-    "prepublishOnly": "napi prepublish -t npm",
-    "preversion": "napi build --platform && git add .",
-    "version": "napi version"
-  },
-  "packageManager": "yarn@4.13.0"
+    "build": "./build.sh"
+  }
 }
