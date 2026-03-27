@@ -1,47 +1,27 @@
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
-function getBindingPath() {
+function getNativeBinding() {
   const { platform, arch } = process;
+
   if (platform !== 'linux') {
-    return null;
+    throw new Error(`Unsupported platform: ${platform} only linux is supported`);
   }
 
-  if (arch === 'x64') {
-    return 'linux-x64-gnu';
+  if (['x64', 'arm64'].includes(arch) === false){
+    throw new Error(`Unsupported arch: ${arch} only x64 and arm64 are supported`);
   }
 
-  if (arch === 'arm64') {
-    return 'linux-arm64-gnu';
+  try {
+    return require(`./raptorq-node.linux-${arch}-gnu.node`);
+  } catch (error) {
+    console.log(error);
   }
 
-  return null;
-};
-
-function load() {
-  const suffix = getBindingPath();
-  if (!suffix) {
-    throw new Error(`Unsupported platform/arch: ${process.platform} ${process.arch}`);
-  }
-
-  const paths = [
-    `./raptorq-node.${suffix}.node`,
-    `@dlot/raptorq-node/raptorq-node-${suffix}`
-  ];
-
-  for (const path of paths) {
-    try {
-      return require(path);
-    } catch (e) {
-      loadErrors.push(e);
-    }
-  }
-
-  console.log(loadErrors);
-  throw new Error("Failed to load native raptorq bindings");
+  throw new Error("Failed to load bindings");
 }
 
-const nativeBinding = load();
+const nativeBinding = getNativeBinding();
 
 export const { RaptorQDecoder, RaptorQEncoder } = nativeBinding;
 export default nativeBinding;
